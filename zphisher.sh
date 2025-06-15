@@ -453,7 +453,7 @@ tunnel_menu() {
 		${RED}[${WHITE}01${RED}]${ORANGE} Localhost
 		${RED}[${WHITE}02${RED}]${ORANGE} Cloudflared  ${RED}[${CYAN}Auto Detects${RED}]
 		${RED}[${WHITE}03${RED}]${ORANGE} LocalXpose   ${RED}[${CYAN}NEW! Max 15Min${RED}]
-                ${YELLOW}[${WHITE}04${YELLOW}]${RED} SERVEO         ${RED}[${GREEN}works well with all links${RED}]
+	     ${YELLOW}[${WHITE}04${YELLOW}]${RED} SERVEO         ${RED}[${GREEN}works well with all sitess${RED}]
 
 	EOF
 
