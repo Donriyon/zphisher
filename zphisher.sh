@@ -423,7 +423,7 @@ start_loclx() {
 }
 
 ## start serveo
-start serveo() {
+start_serveo() {
 echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Initializing Serveo... ${BLUE}(SSH-based, no install needed)${WHITE}"
   { sleep 1; setup_site; }
   echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Starting Serveo tunnel on port 80...${WHITE}"
